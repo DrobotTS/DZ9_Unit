@@ -13,7 +13,7 @@
 # Реализовать класс Unit, с нужным функционалом.
 
 
-class UnitGame:
+class Unit:
 
     def __init__(self, name, clan):
         self.name = name
@@ -35,24 +35,29 @@ class UnitGame:
         return f"{self.name} - {self.health}"
 
     def treatment_unit(self):
-        if 10 <= self.health <= 90:
-            self.health += 10
-        elif self.health == 0:
+        self.health += 10
+        if self.health > 100:
+            self.health = 100
+
+
+    def health_info(self) -> str:
+        if self.health == 0:
             return "Game over"
-        else:
+        elif self.health == 100:
             return "Full health"
 
     def power_unit(self):
-        self.power += 1 if 0 < self.power < 10 else print("Check your power")
+        self.power += 1
+        if self.power >= 10:
+            self.power = 10
 
     def dexterity_unit(self):
-        self.dexterity += 1 if 0 < self.dexterity < 10 else print("Check your dexterity")
+        self.dexterity += 1
+        if self.dexterity >= 10:
+            self.dexterity = 10
 
     def intellect_unit(self):
-        self.intellect += 1 if 0 < self.intellect < 10 else print("Check your intellect")
+        self.intellect += 1
+        if self.intellect >= 10:
+            self.intellect = 10
 
-    # def clan_unit(self):
-    #     if self.clan == "standart" or self.clan == "soldier" or self.clan == "scientist":
-    #         return f"{self.name} - {self.clan}"
-    #     else:
-    #         return "Check your clan"
